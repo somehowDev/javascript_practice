@@ -377,29 +377,44 @@
     </div>
 
     <script>
+      /**
+       * setupToggle 함수는 토글 버튼과 섹션의 내용을 연결합니다.
+       * @param {string} toggleButtonId - 토글 버튼의 HTML 요소 ID
+       * @param {string} contentId - 표시하거나 숨길 섹션의 내용 ID
+       */
       function setupToggle(toggleButtonId, contentId) {
+        // getElementById를 사용하여 DOM에서 토글 버튼 요소를 가져옵니다.
         document
           .getElementById(toggleButtonId)
           .addEventListener("click", function () {
-            var content = document.getElementById(contentId);
-            var button = this;
+            // content 변수를 사용하여 섹션의 내용을 DOM에서 가져옵니다.
+            const content = document.getElementById(contentId);
+            // 버튼 자체에 대한 참조를 this 키워드를 사용하여 가져옵니다.
+            const button = this;
+
+            // 내용이 현재 숨겨져 있는지 (display가 'none')를 확인합니다.
             if (content.style.display === "none") {
+              // 내용을 보이도록 설정합니다 (display를 'block'으로 변경).
               content.style.display = "block";
+              // 토글 버튼의 텍스트를 '➖'로 변경하여 내용이 펼쳐졌음을 나타냅니다.
               button.innerHTML = "➖";
             } else {
+              // 내용을 숨깁니다 (display를 'none'으로 변경).
               content.style.display = "none";
+              // 토글 버튼의 텍스트를 '➕'로 변경하여 내용이 접혔음을 나타냅니다.
               button.innerHTML = "➕";
             }
           });
       }
 
+      // 각 섹션에 대한 토글 기능을 설정합니다.
       setupToggle("toggleTravel", "travelJournal");
       setupToggle("toggleMusic", "musicPlaylist");
       setupToggle("toggleGame", "gameReview");
       setupToggle("toggleFashion", "fashionContent");
       setupToggle("toggleBooks", "booksContent");
       setupToggle("toggleMovie", "movieContent");
-      // 추가적인 섹션을 위해 위의 패턴을 반복
+      // 추가적인 섹션에 대해서는 위와 같은 패턴으로 함수를 호출하여 적용할 수 있습니다.
     </script>
   </body>
 </html>
